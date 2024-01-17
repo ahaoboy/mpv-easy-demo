@@ -1,5 +1,4 @@
 import { Box, Button, } from "@mpv-easy/ui"
-import * as ICON from "firacode-icon"
 import React, { useState } from "react"
 
 const red = "0000FF"
@@ -20,13 +19,11 @@ export default function Counter() {
   console.log("============count: ", count)
   return (
     <Box
-      font="FiraCode Nerd Font Reg"
       fontSize={128}
-      flexDirection="column"
-      justifyContent="end"
     >
       <Button
-        text={ICON.Minus}
+        text={"−"}
+        padding={16}
         onMouseDown={() => {
           console.log("minus: ", count)
           setCount((c) => --c)
@@ -35,8 +32,11 @@ export default function Counter() {
         backgroundColorHover={green}
         colorHover={yellow}
       />
-      <Box text={count.toString()} backgroundColor={blue} />
+      <Box
+        padding={16}
+        text={count.toString()} backgroundColor={blue} />
       <Button
+        padding={16}
         backgroundColor={green}
         backgroundColorHover={blue}
         colorHover={yellow}
@@ -44,7 +44,7 @@ export default function Counter() {
           console.log("plus: ", count)
           setCount((c) => ++c)
         }}
-        text={ICON.Plus}
+        text={"+"}
       />
     </Box>
   )

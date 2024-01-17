@@ -1,18 +1,16 @@
 import { usePropertyBool } from "@mpv-easy/hook"
 import { PropertyBool } from "@mpv-easy/tool"
 import { Box } from "@mpv-easy/ui"
-import { AssColor } from "e-color"
 import React, { useEffect, useState } from "react"
-import * as ICON from "firacode-icon"
 
 const pauseProp = new PropertyBool("pause")
 export default function Play() {
-  const pauseIcon = ICON.Pause
-  const playIcon = ICON.Play
+  const pauseIcon = "⏸"
+  const playIcon = "⏵"
   const [pause, setPause] = usePropertyBool("pause", pauseProp.value)
-  const iconColor = AssColor.Colors.Yellow
-  const iconHoverColor = AssColor.Colors.Yellow
-  const [color, setColor] = useState(iconColor.toHex())
+  const iconColor = "0000FF"
+  const iconHoverColor = "00FFFF"
+  const [color, setColor] = useState(iconColor)
 
   useEffect(() => {
     pauseProp.observe((v) => {
@@ -22,14 +20,16 @@ export default function Play() {
 
   return (
     <Box
+      backgroundColor="00FF00"
       onMouseDown={() => {
-        setPause(!pause)
+        setPause(c => !c)
+        pauseProp.value = !pause
       }}
       onMouseEnter={() => {
-        setColor(iconHoverColor.toHex())
+        setColor(iconHoverColor)
       }}
       onMouseLeave={() => {
-        setColor(iconColor.toHex())
+        setColor(iconColor)
       }}
       fontSize={64}
       color={color}
