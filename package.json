@@ -1,0 +1,42 @@
+{
+  "name": "mpv-easy-tpl",
+  "version": "0.1.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "bundle": "esbuild ./src/index.tsx --bundle --outdir=dist",
+    "es5": "babel --presets  @babel/preset-env ./dist -d es5",
+    "dev": "pnpm run build && pnpm run copy && chokidar \"./src/**/*.(ts|tsx|json)\" -c \"pnpm run build && pnpm run copy\"",
+    "build": "pnpm run bundle && pnpm run es5",
+    "copy": "cp ./es5/index.js $MPV_SCRIPT_DIR/mpv-easy-tpl.js",
+    "babel": "minify ./dist/index.js --out-file ./dist/input.min.js",
+    "lint": "biome check --apply-unsafe  ./",
+    "format": "biome format --write  ./"
+  },
+  "dependencies": {
+    "@mpv-easy/tool": "^0.1.2",
+    "@mpv-easy/hook": "^0.1.2",
+    "@mpv-easy/ui": "^0.1.2",
+    "@mpv-easy/assdraw": "^0.1.2",
+    "react": "^18.2.0",
+    "react-reconciler": "^0.29.0",
+    "firacode-icon": "^0.1.0",
+    "e-color": "^0.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.4",
+    "@biomejs/biome": "^1.5.1",
+    "chokidar-cli": "^3.0.0",
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.6",
+    "@babel/preset-env": "^7.23.6",
+    "@babel/preset-typescript": "^7.23.3",
+    "esbuild": "^0.19.9",
+    "@types/react": "^18.2.45",
+    "@types/react-reconciler": "^0.28.8",
+    "typescript": "^5.3.3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
