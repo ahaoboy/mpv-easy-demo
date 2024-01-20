@@ -22,7 +22,7 @@ export default function Play() {
     <Box
       backgroundColor="00FF00"
       onMouseDown={() => {
-        setPause(c => !c)
+        setPause((c) => !c)
         pauseProp.value = !pause
       }}
       onMouseEnter={() => {

@@ -1,4 +1,4 @@
-import { Box, Button, } from "@mpv-easy/ui"
+import { Box, Button } from "@mpv-easy/ui"
 import React, { useState } from "react"
 
 const red = "0000FF"
@@ -18,9 +18,7 @@ export default function Counter() {
 
   console.log("============count: ", count)
   return (
-    <Box
-      fontSize={128}
-    >
+    <Box fontSize={128}>
       <Button
         text={"−"}
         padding={16}
@@ -32,9 +30,7 @@ export default function Counter() {
         backgroundColorHover={green}
         colorHover={yellow}
       />
-      <Box
-        padding={16}
-        text={count.toString()} backgroundColor={blue} />
+      <Box padding={16} text={count.toString()} backgroundColor={blue} />
       <Button
         padding={16}
         backgroundColor={green}
