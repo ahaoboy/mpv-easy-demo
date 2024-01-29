@@ -1,47 +1,74 @@
 import { Box, Button } from "@mpv-easy/ui"
 import React, { useState } from "react"
 
-const red = "0000FF"
-const green = "00FF00"
-const blue = "FF0000"
-const yellow = "00FFFF"
+const White = "FFFFFF"
+const Gray = "cccccc"
+const Black = "000000"
+const Yellow = "00FFFF"
 
-// stack overflow
-// import { AssColor } from "e-color"
-// const red = AssColor.Colors.Red.toHex()
-// const green = AssColor.Colors.Green.toHex()
-// const blue = AssColor.Colors.Blue.toHex()
-// const yellow = AssColor.Colors.Yellow.toHex()
-
-export default function Counter() {
+const boxSize = 200
+const padding = 10
+function Counter() {
   const [count, setCount] = useState(0)
 
   console.log("============count: ", count)
   return (
-    <Box fontSize={128}>
+    <Box
+      id="counter-main"
+      font="FiraCode Nerd Font Mono Reg"
+      fontSize={boxSize / 4}
+      display="flex"
+      flexDirection="column"
+      justifyContent="start"
+      alignItems="start"
+    >
       <Button
-        text={"−"}
-        padding={16}
+        id="counter-minus"
+        text={"-"}
         onMouseDown={() => {
           console.log("minus: ", count)
           setCount((c) => --c)
         }}
-        backgroundColor={red}
-        backgroundColorHover={green}
-        colorHover={yellow}
+        height={boxSize}
+        width={boxSize}
+        backgroundColor={Gray}
+        backgroundColorHover={White}
+        color={Black}
+        colorHover={Yellow}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
       />
-      <Box padding={16} text={count.toString()} backgroundColor={blue} />
+      <Box
+        id="counter-text"
+        text={count.toString()}
+        backgroundColor={Gray}
+        color={Black}
+        height={boxSize}
+        width={boxSize}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      />
       <Button
-        padding={16}
-        backgroundColor={green}
-        backgroundColorHover={blue}
-        colorHover={yellow}
+        id="counter-plus"
+        backgroundColor={Gray}
+        backgroundColorHover={White}
+        color={Black}
+        colorHover={Yellow}
         onMouseDown={() => {
           console.log("plus: ", count)
           setCount((c) => ++c)
         }}
         text={"+"}
+        height={boxSize}
+        width={boxSize}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
       />
     </Box>
   )
 }
+
+export default Counter

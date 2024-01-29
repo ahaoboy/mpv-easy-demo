@@ -1,11 +1,18 @@
-import { PropertyBool, command, observeProperty } from "@mpv-easy/tool"
-import { Box, Button, render } from "@mpv-easy/ui"
-import React, { useEffect } from "react"
+import { Box, Button } from "@mpv-easy/ui"
+import React from "react"
 import { Provider } from "react-redux"
 
 import { useDispatch, useSelector } from "react-redux"
 
 import { createStore } from "redux"
+
+const White = "FFFFFF"
+const Gray = "cccccc"
+const Black = "000000"
+const Yellow = "00FFFF"
+
+const boxSize = 200
+const padding = 10
 
 // Actions
 const INCREMENT = "INCREMENT"
@@ -44,30 +51,60 @@ function Counter() {
   const count = useSelector((state: State) => state.count)
   const dispatch = useDispatch()
   console.log("============count: ", count)
-  useEffect(() => {
-    setInterval(() => {
-      dispatch({ type: "INCREMENT" })
-    }, 1000)
-  }, [])
-
   return (
-    <Box font="FiraCode Nerd Font Reg" fontSize={128} id="box_0">
-      <Box
-        id="box_1"
+    <Box
+      id="counter-main"
+      font="FiraCode Nerd Font Mono Reg"
+      fontSize={boxSize / 4}
+      display="flex"
+      flexDirection="column"
+      justifyContent="start"
+      alignItems="start"
+    >
+      <Button
+        id="counter-minus"
         text={"-"}
         onMouseDown={() => {
           console.log("minus: ", count)
-          dispatch({ type: "DECREMENT" })
+          dispatch({ type: DECREMENT })
         }}
+        height={boxSize}
+        width={boxSize}
+        backgroundColor={Gray}
+        backgroundColorHover={White}
+        color={Black}
+        colorHover={Yellow}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
       />
-      <Box id="box_2" text={count.toString()} backgroundColor={"FF00FF"} />
       <Box
-        id="box_3"
+        id="counter-text"
+        text={count.toString()}
+        backgroundColor={Gray}
+        color={Black}
+        height={boxSize}
+        width={boxSize}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+      />
+      <Button
+        id="counter-plus"
+        backgroundColor={Gray}
+        backgroundColorHover={White}
+        color={Black}
+        colorHover={Yellow}
         onMouseDown={() => {
           console.log("plus: ", count)
-          dispatch({ type: "INCREMENT" })
+          dispatch({ type: INCREMENT })
         }}
         text={"+"}
+        height={boxSize}
+        width={boxSize}
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
       />
     </Box>
   )

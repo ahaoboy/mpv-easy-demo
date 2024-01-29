@@ -16,3 +16,9 @@ set -x MPV_SCRIPT_DIR /your_mpv_dir/portable_config/scripts ; pnpm run dev
 
 ## counter-ui
 ![counter-ui](./img/counter-ui.gif)
+
+## drag-ball
+![drag-ball](./img/drag-ball.gif)
+
+## snake
+![snake](./img/snake.gif)
