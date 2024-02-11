@@ -1,9 +1,9 @@
 import { AssDraw } from "@mpv-easy/assdraw"
-import { Overlay, command } from "@mpv-easy/tool"
+import { OsdOverlay, command } from "@mpv-easy/tool"
 command("set osc no")
 
 let c = 0
-const counter = new Overlay()
+const counter = new OsdOverlay()
 
 setInterval(() => {
   counter.data = new AssDraw()

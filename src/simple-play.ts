@@ -1,7 +1,7 @@
 import { AssDraw } from "@mpv-easy/assdraw"
-import { Overlay, PropertyBool } from "@mpv-easy/tool"
+import { PropertyBool, OsdOverlay } from "@mpv-easy/tool"
 
-const overlay = new Overlay()
+const overlay = new OsdOverlay()
 new PropertyBool("pause").observe((v) => {
   console.log("pause: ", v)
   overlay.data = new AssDraw()
