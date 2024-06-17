@@ -6,7 +6,7 @@
   "scripts": {
     "bundle": "esbuild ./src/index.tsx --bundle --outdir=dist",
     "es5": "babel --presets  @babel/preset-env ./dist -d es5 --plugins ./babel/hack.js",
-    "dev": "pnpm run build && pnpm run copy && chokidar \"./src/**/*.(ts|tsx|json)\" -c \"pnpm run build && pnpm run copy\"",
+    "dev": "chokidar 'src/**/*.{ts,tsx,json}' -c \"pnpm run build && pnpm run copy\" -d 2000  --initial",
     "build": "pnpm run bundle && pnpm run es5",
     "copy": "cp ./es5/index.js $MPV_SCRIPT_DIR/mpv-easy-tpl.js",
     "babel": "minify ./dist/index.js --out-file ./dist/input.min.js",
@@ -33,7 +33,7 @@
     "@types/node": "^20.10.4",
     "@types/react": "^18.2.45",
     "@types/react-reconciler": "^0.28.8",
-    "chokidar-cli": "^3.0.0",
+    "@chokidar-napi/chokidar": "0.1.1",
     "esbuild": "^0.19.9",
     "typescript": "^5.3.3"
   },
